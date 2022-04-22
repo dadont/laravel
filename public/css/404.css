@@ -1,0 +1,125 @@
+*
+{
+    margin:0;
+    padding:0;
+}
+@font-face
+{
+    font-family:Roboto;
+    src:url("fonts/2211.ttf");
+}
+@font-face
+{
+    font-family: Roboto_thin;
+    src:url("fonts/2209.ttf");
+}
+body
+{
+    background-color: #303030;
+}
+.container
+{
+    width:960px;
+    height: 100%;
+    margin:0 auto;
+}
+.logo
+{
+    width: 76px;
+    height:76px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    background:#333 url('../img/R_hover.png') no-repeat center;
+
+}
+.content
+{
+    position: relative;
+    top:80px;
+    width:350px;
+    margin:0 auto;
+}
+h1
+{
+    font:72px Roboto;
+    text-align: center;
+    color: #fff;
+}
+h2
+{
+    font:30px Roboto;
+    text-align: center;
+    color: #fff;
+}
+.img_404
+{
+    margin-top:30px;
+    height: 136px;
+    background: url("../img/404.png") no-repeat center 0;
+    border-bottom: 3px solid #242424;
+    padding-bottom: 62px;
+}
+.help_links_text
+{
+    margin-top:40px;
+    font:18px Roboto;
+    color: #fff;
+    text-align: center;
+}
+.btn_group
+{
+    text-align: center;
+    margin-top:35px;
+}
+.btn
+{
+    font: 13.5px Roboto_thin;
+    line-height:30px;
+    display: inline-block;
+    color: #fff;
+    background-color: #242424;
+    background-position-x: 7px;
+    background-position-y: center;
+    background-repeat:no-repeat;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    padding-left:37px;
+    padding-right:10px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.btn:hover
+{
+    color: #6ecfc6;
+}
+.btn.btn1
+{
+    background-image:url("../img/white_icon_1.png");
+    float: left;
+}
+.btn.btn1:hover
+{
+    background-image:url("../img/white_icon_1_.png");
+}
+.btn.btn2
+{
+    background-image:url("../img/white_icon_2.png");
+}
+.btn.btn2:hover
+{
+    background-image:url("../img/white_icon_2_.png");
+}
+.btn.btn3
+{
+    background-image:url("../img/white_icon_3.png");
+    float: right;
+}
+.btn.btn3:hover
+{
+    background-image:url("../img/white_icon_3_.png");
+}

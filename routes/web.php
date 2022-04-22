@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('rest', RestTestController::class)->names('resTest');
+//Route::resource('rest', RestTestController::class)->names('resTest');
 
 Route::group(['namespace' => 'App\Http\Controllers\Blog', 'prefix' => 'blog'], function () {
     Route::resource('posts', PostController::class)->names('blog.posts');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
