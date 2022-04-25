@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\BlogCategoryUpdateRequest;
+use App\Http\Requests\BlogCategoryCreateRequest;
 use App\Models\BlogCategory;
 
 class CategoryController extends BaseController
@@ -25,7 +26,10 @@ class CategoryController extends BaseController
      */
     public function create()
     {
-        dd(__METHOD__);
+        $item = new BlogCategory();
+        //dd($item);
+        $categoryList = BlogCategory::all();
+        return View('blog.admin.categories.edit', compact('item', 'categoryList'));
     }
 
     /**
@@ -34,10 +38,26 @@ class CategoryController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BlogCategoryCreateRequest $request)
     {
-        dd(__METHOD__);
+        $data = $request->input();
+        if(empty($data['Slug'])) {
+            $data['slug'] = str_slug($data['title']);
+        }
+        
+        $item = new BlogCategory($data);
+        //dd($item);
+        $item->save();
+
+        if ($item) {
+            return redirect()->route('blog.admin.categories.edit', [$item->id])
+                ->with(['success' => 'Успешно сохранено']);
+        } else {
+            return back()->withErrors(['msg' => 'Ошибка сохранения'])
+                ->withInput();
+        }
     }
+
 
 
 
@@ -63,8 +83,11 @@ class CategoryController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BlogCategoryUpdateRequest $request, $id)
     {
+
+        //$validatedData = $request->validate($rules);
+
         $item = BlogCategory::find($id);
         //dd($item);
         if(empty($item)) {
@@ -78,7 +101,7 @@ class CategoryController extends BaseController
             $data['slug'] = str_slug($data['title']);
         }
 
-        $result = $item->fill($data)->save();
+        $result = $item->update($data);
 
         if ($result) {
             return redirect()
