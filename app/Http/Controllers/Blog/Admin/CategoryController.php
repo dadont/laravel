@@ -9,14 +9,18 @@ use App\Models\BlogCategory;
 
 class CategoryController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
+    private $blogCategoryRepository;
+
+    public function __construct(){
+        parent::__construct();
+        $this->blogCategoryRepository = app(BlogCategoryRepository::class);
+    }
+
     public function index()
     {
-        $paginator = BlogCategory::paginate(50);
+        //$paginator = BlogCategory::paginate(50);
+        $paginator = $this->blogCategoryRepository->getAllWithPaginate(5);
         return view('blog.admin.categories.index',compact('paginator'));
     }
 
@@ -29,7 +33,7 @@ class CategoryController extends BaseController
     {
         $item = new BlogCategory();
         //dd($item);
-        $categoryList = BlogCategory::all();
+        $categoryList = $this->blogCategoryRepository->getForComboBox();
         return View('blog.admin.categories.edit', compact('item', 'categoryList'));
     }
 
