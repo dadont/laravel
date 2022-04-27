@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 /**
  * Class BlogcategoryRepository.
  */
-class BlogcategoryRepository extends CoreRepository
+class BlogCategoryRepository extends CoreRepository
 {
     public function getModelClass()
     {
