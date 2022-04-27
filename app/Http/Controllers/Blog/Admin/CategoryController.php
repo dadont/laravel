@@ -96,7 +96,7 @@ class CategoryController extends BaseController
 
         //$validatedData = $request->validate($rules);
 
-        $item = BlogCategory::find($id);
+        $item = $this->blogCategoryRepository->getEdit($id);
         //dd($item);
         if(empty($item)) {
             return back()
