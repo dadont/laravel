@@ -13,7 +13,7 @@ class BlogPostRepository extends CoreRepository
     {
         return Model::class;
     }
-/*
+
     public function getEdit($id)
     {
         return $this->startConditions()->find($id);
@@ -28,15 +28,24 @@ class BlogPostRepository extends CoreRepository
         return $result;
     }
 
-    public function getAllWithPaginate($perPage = null)
+    public function getAllWithPaginate()
     {
-        $columns = ['id', 'title', 'parent_id'];
+        $columns = [
+            'id',
+            'title',
+            'slug',
+            'is_published',
+            'published_at',
+            'ser_id',
+            'category_id',
+        ];
         $result = $this
             ->startConditions()
             ->select($columns)
-            ->paginate($perPage);
+            ->orderBy('id', 'DESC')
+            ->paginate(25);
         //dd($result);
         return $result;
     }
-*/
+
 }
