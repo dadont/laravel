@@ -36,15 +36,16 @@ class BlogPostRepository extends CoreRepository
             'slug',
             'is_published',
             'published_at',
-            'ser_id',
+            'user_id',
             'category_id',
         ];
         $result = $this
             ->startConditions()
             ->select($columns)
             ->orderBy('id', 'DESC')
+            ->with('category', 'user')
             ->paginate(25);
-        //dd($result);
+        //dd($result->first());
         return $result;
     }
 

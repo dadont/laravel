@@ -21,19 +21,21 @@
                             </thead>
                             <tbody>
                             @foreach ($paginator as $post)
-                                @php /** @var  \App\Models\BlogPost $post */ @endphp
-                                <tr>
-                                    <td> {{$item->id}} </td>
+                                @php 
+                                    /** @var  \App\Models\BlogPost $post */ 
+                                @endphp
+                                <tr @if(!$post->is_published) style="background-color: #ccc;" @endif>
+                                    <td> {{$post->id}} </td>
+                                    <td> {{$post->user->name}} </td>
+                                    <td> {{$post->category->title}} </td>
                                     <td>
-                                        <a href = "{{route ('blog.admin.categories.edit', $item->id)}}">{{$item->title}}
-                                        </a>
+                                        <a href = "{{route ('blog.admin.posts.edit', $post->id)}}">{{$post->title}}</a>
                                     </td>
-                                    <td @if(in_array ($item->parent_id, [0, 1])) style="color:#ccc" @endif>
-                                        {{$item->parent_id}}{{-- $item->parentCategory->title --}}
-                                    </td>
+                                    <td>{{$post->published_at ? \Carbon\Carbon::parse($post->published_at)->format('d.M H:i') : '' }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
+                            <tfoot></tfoot>
                         </table>
                     </div>
                 </div>
@@ -45,7 +47,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            {{$paginator->links() }}
+                            {{$paginator->links('pagination::bootstrap-4') }}
                         </div>
                     </div>
                 </div>
