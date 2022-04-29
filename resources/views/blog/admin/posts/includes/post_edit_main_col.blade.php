@@ -59,7 +59,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="slug">Идентификатор</label>
+                        <label for="slug">Идентификатор</label>
+                            <input name="slug" value="{{ $item->slug }}"
+                                id="slug"
+                                type="text"
+                                class="form-control">
+                        </div>
+                        <div class="form-group">
+                        <label for="slug">Идентификатор</label>
                             <input name="slug" value="{{ $item->slug }}"
                                 id="slug"
                                 type="text"
