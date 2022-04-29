@@ -13,7 +13,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="maindata" role="tabpanel">
                         <div class="form-group">
-                            <label for="title">Заголовое</label>
+                            <label for="title">Заголовок</label>
                             <input name="title" value="{{ $item->title }}"
                                 id="title"
                                 type="text"
