@@ -43,6 +43,23 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="adddata" role="tabpanel">
+                        
+                        <div class="form-group">
+                            <label for="slug">Идентификатор</label>
+                                <input name="slug" value="{{ $item->slug }}"
+                                    id="slug"
+                                    type="text"
+                                    class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="excerpt">Выдержка</label>
+                            <textarea name="excerpt"
+                                id="excerpt"
+                                class="form-control"
+                                rows="3">{{ old('excerpt', $item->excerpt) }}</textarea>
+                        </div>
+
                         <div class="form-group">
                             <label for="title">Категория</label>
                             <select name="category_id"
@@ -56,30 +73,6 @@
                                     {{ $categoryOption->id_title}}
                                 </option>
                             @endforeach
-                        </div>
-
-                        <div class="form-group">
-                        <label for="slug">Идентификатор</label>
-                            <input name="slug" value="{{ $item->slug }}"
-                                id="slug"
-                                type="text"
-                                class="form-control">
-                        </div>
-                        <div class="form-group">
-                        <label for="slug">Идентификатор</label>
-                            <input name="slug" value="{{ $item->slug }}"
-                                id="slug"
-                                type="text"
-                                class="form-control">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="excerpt">Выдержка</label>
-                            <textarea name="excerpt"
-                                id="excerpt"
-                                class="form-control"
-                                rows="3">{{ old('excerpt', $item->excerpt) }}</textarea>
                         </div>
 
                         <div class="form-check">
