@@ -10,6 +10,10 @@ class BlogCategory extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    const ROOT = 1;
+
+
     protected $fillable
         = [
             'title',
@@ -17,4 +21,27 @@ class BlogCategory extends Model
             'parent_id',
             'description',
         ];
+    
+    public function parentCategory()
+    {
+        return $this->belongsTo(BlogCategory::class, 'parent_id', 'id')->withDefault(['title' => '???']);
+    }
+
+    public function getParentTitleAttribute()
+    {
+        $title = $this->parentCategory->title
+        
+        ?? ($this->isRoot()
+            ? 'Корень'
+            : '???');
+            dd($this->isRoot());
+        return $title;
+    }
+    
+    public function isRoot()
+    {
+        return $this->id === BlogCategory::ROOT;
+    }
+
+    
 }
