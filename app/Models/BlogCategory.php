@@ -24,17 +24,15 @@ class BlogCategory extends Model
     
     public function parentCategory()
     {
-        return $this->belongsTo(BlogCategory::class, 'parent_id', 'id')->withDefault(['title' => '???']);
+        return $this->belongsTo(BlogCategory::class, 'parent_id', 'id');
     }
 
     public function getParentTitleAttribute()
     {
         $title = $this->parentCategory->title
         
-        ?? ($this->isRoot()
-            ? 'Корень'
-            : '???');
-            dd($this->isRoot());
+        ?? ($this->isRoot() ? 'Корень' : '???');
+           // dd($this->parentCategory->title, $this->isRoot());
         return $title;
     }
     
