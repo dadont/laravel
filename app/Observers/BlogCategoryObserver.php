@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\Models\BlogCategory;
+use App\Models\BlogCategory;
 
 class BlogCategoryObserver
 {

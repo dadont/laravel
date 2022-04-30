@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\Models\BlogPost;
+use App\Models\BlogPost;
 
 class BlogPostObserver
 {
