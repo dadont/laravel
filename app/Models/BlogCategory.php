@@ -32,7 +32,6 @@ class BlogCategory extends Model
         $title = $this->parentCategory->title
         
         ?? ($this->isRoot() ? 'Корень' : '???');
-           // dd($this->parentCategory->title, $this->isRoot());
         return $title;
     }
     
