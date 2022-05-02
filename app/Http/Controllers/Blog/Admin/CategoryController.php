@@ -31,7 +31,7 @@ class CategoryController extends BaseController
      */
     public function create()
     {
-        $item = new BlogCategory();
+        $item = BlogCategory::make();
         //dd($item);
         $categoryList = $this->blogCategoryRepository->getForComboBox();
         return View('blog.admin.categories.edit', compact('item', 'categoryList'));
@@ -50,7 +50,7 @@ class CategoryController extends BaseController
  //           $data['slug'] = str_slug($data['title']);
 //        }
         
-        $item = new BlogCategory($data);
+        $item = BlogCategory::create($data);
         //dd($item);
         $item->save();
 
