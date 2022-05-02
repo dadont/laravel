@@ -25,13 +25,19 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::group(['namespace' => 'App\Http\Controllers', 'prefix' => 'digging_deeper'], function (){
+    Route::get('collections', 'DDController@collections')
+       ->name('digging_deeper.collections');
+});
+
 //Админка блога
 $groupData = [
     'namespace' => 'App\Http\Controllers\Blog\Admin',
     'prefix' => 'admin/blog',
 ];
-Route::group($groupData, function () {
+    Route::group($groupData, function () {
     $methods = ['index', 'edit', 'store', 'update', 'create',];
+    
     Route::resource('categories', 'CategoryController')
     ->only($methods)
     ->names('blog.admin.categories');
@@ -40,7 +46,5 @@ Route::group($groupData, function () {
     ->except('show')
     ->names('blog.admin.posts');
 
-
-    
 });
 
