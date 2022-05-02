@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\BlogPost; 
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,7 +20,7 @@ class BlogPostAfterDeleteJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(BlogPost $blogPostId)
+    public function __construct($blogPostId)
     {
         $this->blogPostId = $blogPostId;
     }
